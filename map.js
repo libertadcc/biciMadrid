@@ -76,13 +76,6 @@ const bicisLayer = new FeatureLayer({
   }
 });
 
-const bikeIcon = {
-  type: "picture-marker",
-  url: "https://img.icons8.com/windows/32/000000/bike-parking.png",
-  width: 20,
-  height: 20
-}
-
 const estacionesBiciMad = new FeatureLayer({
   url: "https://services3.arcgis.com/lnFkorfBb3ma2riJ/arcgis/rest/services/Aparcabicis/FeatureServer/0/",
   renderer: {
@@ -137,28 +130,3 @@ view.ui.add(searchWidget, {
   position: "top-right"
 });
 
-/*
-TIPOLOGÍA
-
-VÍA USO COMPARTIDO
-VÍA EXCLUSIVA BICI
-ANILLO VERDE CICLISTA
-VÍA PREFERENTE BICI
-GIROS Y SENTIDOS
-*/
-
-/*
-TIPO VÍA
-
-CICLOCARRIL
-ACERA BICI
-SENDA CICLABLE
-CARRIL BICI
-CIRCUITO DE OCIO
-ENCAMINAMIENTO
-PISTA BICI
-PASO DE BICI
-VÍA MIXTA
-GIRO PERMITIDO
-Other
-*/
