@@ -8,7 +8,7 @@ import esriConfig from "https://js.arcgis.com/4.18/@arcgis/core/config.js";
 esriConfig.apiKey = "AAPK38d0654e1eb749b7b6cfc3079bbfdf44KkQ5OBC4rat6o-i1VOw7ZF1KBDM5dz15O0LTwwLLOdzqFeLwVopKBOQQ0Z-qP4VJ";
 
 const map = new Map({
-  basemap: "arcgis-navigation"
+  basemap: "navigation-vector"
 });
 
 const view = new MapView({
@@ -117,6 +117,8 @@ view.ui.add(
     layerInfos: [{
       layer: bicisLayer,
       title: "Carriles bici en Madrid"
+    }, {
+      layer: estacionesBiciMad
     }]
   }),
   "bottom-right"
