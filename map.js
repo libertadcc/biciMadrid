@@ -8,7 +8,7 @@ import esriConfig from "https://js.arcgis.com/4.18/@arcgis/core/config.js";
 esriConfig.apiKey = "AAPK38d0654e1eb749b7b6cfc3079bbfdf44KkQ5OBC4rat6o-i1VOw7ZF1KBDM5dz15O0LTwwLLOdzqFeLwVopKBOQQ0Z-qP4VJ";
 
 const map = new Map({
-  basemap: "navigation-vector"
+  basemap: "arcgis-navigation"
 });
 
 const view = new MapView({
@@ -18,7 +18,7 @@ const view = new MapView({
   zoom: 12
 });
 
-const viaRenderer = {
+const bikeLaneRenderer = {
   type: "unique-value",
   field: "TIPOLOGÍA",
   defaultSymbol: { type: "simple-line", color: "pink", width: "1.5"},
@@ -66,9 +66,9 @@ const viaRenderer = {
   ]
 };
 
-const bicisLayer = new FeatureLayer({
+const bikeLaneLayer = new FeatureLayer({
   url: "https://services3.arcgis.com/3km0jzByGXckHKks/ArcGIS/rest/services/Carriles_Bici_Madrid/FeatureServer/0",
-  renderer: viaRenderer,
+  renderer: bikeLaneRenderer,
   outFields: ['*'],
   popupTemplate: {
     title: "{TIPOLOGÍA}",
@@ -76,7 +76,7 @@ const bicisLayer = new FeatureLayer({
   }
 });
 
-const estacionesBiciMad = new FeatureLayer({
+const bikeStations = new FeatureLayer({
   url: "https://services3.arcgis.com/lnFkorfBb3ma2riJ/arcgis/rest/services/Aparcabicis/FeatureServer/0/",
   renderer: {
     "type": "simple",
@@ -107,18 +107,16 @@ const estacionesBiciMad = new FeatureLayer({
   }
 });
 
-
-
-map.addMany([bicisLayer, estacionesBiciMad]);
+map.addMany([bikeLaneLayer, bikeStations]);
 
 view.ui.add(
   new Legend({
     view: view,
     layerInfos: [{
-      layer: bicisLayer,
-      title: "Carriles bici en Madrid"
+      layer: bikeStations
     }, {
-      layer: estacionesBiciMad
+      layer: bikeLaneLayer,
+      title: "Carriles bici en Madrid"
     }]
   }),
   "bottom-right"
